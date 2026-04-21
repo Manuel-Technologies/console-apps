@@ -1,79 +1,52 @@
-﻿// using System;
-
-// public class Program
-// {
-//     public static void Main()
-//     {
-//             Console.WriteLine($"input your first number");
-//             double CalcOperand = double.Parse(Console.ReadLine());
-//             Console.WriteLine($"input your second number");
-//             double CalcOPerator = double.Parse(Console.ReadLine());
-
-//             CalculatorHelper calculatorHelper = new CalculatorHelper(CalcOperand,CalcOPerator);
-
-//             Console.WriteLine($"input the math operation you want to perform");
-//             Console.WriteLine($" +  , /  ,  * ");
-//             string? mathOperation = Console.ReadLine();
-//             double mathResult;
-
-//             if(mathOperation=="+")
-//             {
-//                mathResult= calculatorHelper.Addition();
-//                Console.WriteLine($"the result of the calculation is {mathResult}");
-//             }
-
-//             else if(mathOperation=="-")
-//             {
-//               mathResult=calculatorHelper.Subtraction();
-//             //   Console.WriteLine(mathResult); 
-//             Console.WriteLine($"the result of the calculation is {mathResult}");     
-//             }
-
-//             else if(mathOperation=="*")
-//             {
-//                 mathResult=calculatorHelper.Multiplication();
-//                 Console.WriteLine(mathResult);
-//             }
-
-//             else if (mathOperation=="/")
-//             {
-//                 mathResult=calculatorHelper.Division();
-//                Console.WriteLine($"the result of the calculation is {mathResult}");
-//             }
-
-//             else
-//             {
-//                 Console.WriteLine($"please input the right thing");
-//             }
-                
+﻿using System;
+using System.IO;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;  
+using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 
 
-//     }
-// }
 
-
-public class Program 
+public class MainApp
 {
-    public static void Main()
+    static void Main(string[] args)
     {
-       
-        
-    }
-}
+        Console.WriteLine($"welcome to taskFlow ...the best task management app in the world");
 
-public struct rectangle
-{
-    public double length;
-    public double width;
+        List<Task> tasks = new List<Task>();
+        bool isRunning = true;
 
-    public rectangle(double length, double width)
-    {
-        this.length=length;
-        this.width=width;
-    }
+        while (isRunning)
+        {
+            Console.WriteLine("\nPlease select an option:");
+            Console.WriteLine("1. Add a task");
+            Console.WriteLine("2. View tasks");
+            Console.WriteLine("3. Delete task");
+            Console.WriteLine("4. Edit tasks");
+            Console.WriteLine("5. Exit");
 
-    public double area()
-    {
-        return length*width;
+            string? choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    AddTask(tasks);
+                    break;
+                case "2":
+                    ViewTasks(tasks);
+                    break;
+                case "3":
+                    isRunning = false;
+                    Console.WriteLine("Exiting the application. Goodbye!");
+                    break;
+
+                    case "4"
+                default:
+                    Console.WriteLine("Invalid option. Please try again.");
+                    break;
+            }
+        }
+
     }
 }
