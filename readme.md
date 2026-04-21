@@ -1,66 +1,67 @@
 # TaskFlow Console App
 
-TaskFlow is a C# console-based task management app intended to help users create, view, edit, and manage personal tasks from the terminal.
+TaskFlow is a simple C# console application for managing tasks from the terminal.
+You can add tasks, view all tasks, and delete tasks by title.
 
-This project is currently in an early development state. The core menu flow and a task model are started, while some parts are still being implemented.
+## Features
 
-## Project Goals
-
-- Provide a simple command-line task manager.
-- Support task creation, viewing, editing, and deletion.
-- Add task metadata such as:
-  - Title and description
+- Add a task with:
+  - Title
+  - Body/description
   - Status
+  - Due date
   - Priority
   - Category
-  - Due date
-  - Created/updated timestamps
-
-## Current Status
-
-Current implementation includes:
-
-- A console entry point (`Main`) with a menu loop.
-- A `Tasks` model class with properties for common task fields.
-- Placeholder files for planned architecture:
-  - `TaskManager.cs`
-  - `TaskStatus.cs`
-  - `PriorityLevel.cs`
-
-Current limitations:
-
-- The project does **not compile yet**.
-- `Program.cs` has a `switch` syntax issue (`case "4"` missing `:`).
-- `AddTask(...)` and `ViewTasks(...)` are called but not implemented.
-- `List<Task>` is used in `Program.cs`, but the model class is named `Tasks`, creating a type mismatch.
-- Menu option labels and behavior are inconsistent (`"3. Delete task"` currently exits the app).
+  - Created date (auto-set)
+  - Updated date (auto-set)
+- View all tasks currently stored in memory.
+- Delete a task by its title.
+- Menu-driven CLI flow.
 
 ## Tech Stack
 
-- Language: C#
-- Runtime/SDK target: `.NET 10.0` (`net10.0`)
-- Project type: Console application
+- C#
+- .NET `net10.0`
+- Console application
 
 ## Project Structure
 
 ```text
 .
-├── Program.cs             # Entry point and menu loop
-├── Tasks.cs               # Task data model
-├── TaskManager.cs         # Planned task service/manager (currently empty)
-├── TaskStatus.cs          # Planned status enum/constants (currently empty)
-├── PriorityLevel.cs       # Planned priority enum/constants (currently empty)
-├── simple console apps.csproj
-└── simple console apps.sln
+|- Program.cs                    # App entry point and menu loop
+|- TaskManager.cs                # Core task operations: add, view, delete
+|- Tasks.cs                      # Task model with constructor and properties
+|- simple console apps.csproj
+|- simple console apps.sln
+`- readme.md
 ```
 
-## Build and Run
+## How It Works
+
+The app starts a loop with 4 options:
+
+1. Add Task
+2. View Tasks
+3. Delete Task
+4. Exit
+
+When adding a task, the app asks for all task fields, creates a `Tasks` object, then stores it through `TaskManager`.
+
+## Build Status
+
+Latest check:
+
+- `dotnet build` completed successfully
+- 0 errors
+- 0 warnings
+
+## Getting Started
 
 ### Prerequisites
 
-- Install .NET SDK compatible with `net10.0`.
+- Install a .NET SDK that supports `net10.0`.
 
-### Commands
+### Run locally
 
 ```bash
 dotnet restore
@@ -68,44 +69,37 @@ dotnet build
 dotnet run
 ```
 
-## Known Build Error (Current)
+## Usage Example
 
-As of the latest check, running `dotnet build` returns:
+1. Run the app.
+2. Select `1` to add a task.
+3. Enter task details when prompted.
+4. Select `2` to list tasks.
+5. Select `3` and enter a title to delete a task.
+6. Select `4` to exit.
 
-- `CS1003: Syntax error, ':' expected` in `Program.cs`
+## Current Limitation
 
-Fixing this, plus implementing missing methods and aligning the task type name, is required before successful execution.
+- Tasks are stored in memory only (no file/database persistence).
+- In the current implementation, `TaskManager` is created inside the menu loop, so tasks are reset each iteration.
+  To keep tasks during the full app session, instantiate `TaskManager` once before the loop.
 
-## Suggested Next Milestones
+## Suggested Improvements
 
-1. Fix `switch` syntax in `Program.cs`.
-2. Rename `Tasks` to `Task` (or update usage) so types are consistent.
-3. Implement:
-   - `AddTask(List<Task> tasks)`
-   - `ViewTasks(List<Task> tasks)`
-4. Correct menu behavior for delete/edit/exit options.
-5. Move business logic into `TaskManager`.
-6. Add enums in:
-   - `TaskStatus.cs`
-   - `PriorityLevel.cs`
-7. Add input validation and friendly error handling.
-
-## Example Future Features
-
-- Search tasks by status/category/priority.
-- Mark task as completed.
-- Save tasks to a local file (JSON) so tasks persist between runs.
-- Sort by due date or priority.
+1. Create one `TaskManager` instance outside the `while` loop.
+2. Add input validation for date parsing and required fields.
+3. Use enums for `TaskStatus` and `TaskPriority`.
+4. Add edit/update task functionality.
+5. Persist tasks to JSON so data survives app restarts.
+6. Add unit tests for `TaskManager`.
 
 ## Contributing
 
-If you are contributing:
-
-1. Create a branch.
+1. Create a feature branch.
 2. Make focused changes.
-3. Run `dotnet build` before pushing.
-4. Open a pull request with a short summary of what changed.
+3. Run `dotnet build` and verify it passes.
+4. Open a pull request with a short description.
 
 ## License
 
-No license has been added yet. Add a `LICENSE` file to define usage terms.
+No license file is currently included. Add a `LICENSE` file if you plan to distribute this project.

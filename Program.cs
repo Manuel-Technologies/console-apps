@@ -1,52 +1,69 @@
-﻿using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;  
-using System.Threading.Tasks;
-using System.Runtime.InteropServices;
+﻿using System.Linq.Expressions;
 
-
-
-public class MainApp
+public class MainApp 
 {
-    static void Main(string[] args)
+    public static void Main(string[] args)
     {
-        Console.WriteLine($"welcome to taskFlow ...the best task management app in the world");
-
-        List<Task> tasks = new List<Task>();
+     
         bool isRunning = true;
 
         while (isRunning)
         {
-            Console.WriteLine("\nPlease select an option:");
-            Console.WriteLine("1. Add a task");
-            Console.WriteLine("2. View tasks");
-            Console.WriteLine("3. Delete task");
-            Console.WriteLine("4. Edit tasks");
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("Task Manager");
+            Console.WriteLine("1. Add Task");
+            Console.WriteLine("2. View Tasks");
+            Console.WriteLine("3. Delete Task");
+            Console.WriteLine("4. Exit");
+            Console.Write("Select an option: ");
+            string? option = Console.ReadLine();
 
-            string? choice = Console.ReadLine();
+            TaskManager taskManager = new TaskManager();
 
-            switch (choice)
+            switch (option)
             {
                 case "1":
-                    AddTask(tasks);
-                    break;
-                case "2":
-                    ViewTasks(tasks);
-                    break;
-                case "3":
-                    isRunning = false;
-                    Console.WriteLine("Exiting the application. Goodbye!");
+                    Console.Write("Enter task title: ");
+                    string? title = Console.ReadLine();
+                    Console.Write("Enter task body: ");
+                    string? body = Console.ReadLine();
+                    Console.Write("Enter task status: ");
+                    string? status = Console.ReadLine();
+                    Console.Write("Enter task due date (yyyy-MM-dd): ");
+                    DateTime dueDate = DateTime.Parse(Console.ReadLine()!);
+                    DateTime createdDate = DateTime.Now;
+                    DateTime updatedDate = DateTime.Now;
+                    Console.Write("Enter task priority: ");
+                    string? priority = Console.ReadLine();
+                    Console.Write("Enter task category: ");
+                    string? category = Console.ReadLine();
+
+                    Tasks newTask = new Tasks(title, body, status, dueDate, createdDate, updatedDate, priority, category);
+                    taskManager.AddTask(newTask);
                     break;
 
-                    case "4"
+                case "2":
+                    taskManager.ViewTasks();
+                    break;
+
+                case "3":
+                    Console.Write("Enter the title of the task to delete: ");
+                    string? deleteTitle = Console.ReadLine();
+                    taskManager.DeleteTask(deleteTitle!);
+                    break;
+
+                case "4":
+                    isRunning = false;
+                    break;
+
                 default:
                     Console.WriteLine("Invalid option. Please try again.");
                     break;
             }
+
+            Console.WriteLine();
         }
+
+
 
     }
 }

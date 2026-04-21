@@ -9,6 +9,18 @@ public class Tasks
     public string?  TaskPriority {get;set;}
     public string?  TaskCategory {get;set;}
 
+    public Tasks(string? title, string? body, string? status, DateTime dueDate, DateTime createdDate, DateTime updatedDate, string? priority, string? category)
+    {
+        TaskTitle = title;
+        TaskBody = body;
+        TaskStatus = status;
+        TaskDueDate = dueDate;
+        TaskCreatedDate = createdDate;
+        TaskUpdatedDate = updatedDate;
+        TaskPriority = priority;
+        TaskCategory = category;
+    }
+
 
 
 }

@@ -1,3 +1,5 @@
+using System.Security.Cryptography.X509Certificates;
+
 public class TaskManager
 {
     private List<Tasks> tasks;
@@ -34,5 +36,21 @@ public class TaskManager
             Console.WriteLine($"Category: {task.TaskCategory}");
             Console.WriteLine();
         }
+
+    
     }
+
+    public void DeleteTask(string title)
+    {
+        var taskToRemove = tasks.FirstOrDefault(t => t.TaskTitle == title);
+        if (taskToRemove != null)
+        {
+            tasks.Remove(taskToRemove);
+            Console.WriteLine("Task deleted successfully.");
+        }
+        else
+        {
+            Console.WriteLine("Task not found.");
+        }
+    }   
 }

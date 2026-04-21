@@ -3,3 +3,13 @@ C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.
 C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.AssemblyInfo.cs
 C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.csproj.CoreCompileInputs.cache
 C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.sourcelink.json
+C:\Users\NWCS\Desktop\simple console apps\bin\Debug\net10.0\simple console apps.exe
+C:\Users\NWCS\Desktop\simple console apps\bin\Debug\net10.0\simple console apps.deps.json
+C:\Users\NWCS\Desktop\simple console apps\bin\Debug\net10.0\simple console apps.runtimeconfig.json
+C:\Users\NWCS\Desktop\simple console apps\bin\Debug\net10.0\simple console apps.dll
+C:\Users\NWCS\Desktop\simple console apps\bin\Debug\net10.0\simple console apps.pdb
+C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.dll
+C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\refint\simple console apps.dll
+C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.pdb
+C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\simple console apps.genruntimeconfig.cache
+C:\Users\NWCS\Desktop\simple console apps\obj\Debug\net10.0\ref\simple console apps.dll
